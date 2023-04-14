@@ -34,7 +34,7 @@ class InvestmentPortfolio:
             for i in self.portfolio:
                 try:
                     futures.append(executor.submit(self.get_info_securities, i, period))
-                except BaseException:
+                except IndexError:
                     WorkingWithJson.delete_stock(i)
             count = 0
             for future in concurrent.futures.as_completed(futures):

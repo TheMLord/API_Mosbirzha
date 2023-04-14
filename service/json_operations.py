@@ -15,3 +15,13 @@ class WorkingWithJson:
     def write_portfolio_dict_json(portfolio_dict: dict):
         with open("portfolio.json", "w", encoding="UTF-8") as file_json:
             json.dump(portfolio_dict, file_json)
+
+    @staticmethod
+    def delete_stock(ticker: str):
+        dict_stock = WorkingWithJson.read_portfolio_dict_json()
+        try:
+            del dict_stock[ticker]
+            WorkingWithJson.write_portfolio_dict_json(dict_stock)
+            return True
+        except KeyError:
+            return False

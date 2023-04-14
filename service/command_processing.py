@@ -45,5 +45,12 @@ class Command:
                     logging.info(portfolio.output_portfolio(period))
                 except ValueError:
                     logging.warning("некорректная команда")
+            elif self.command[1] == "delete_stock":
+                if WorkingWithJson.delete_stock(self.command[2]):
+                    logging.info(f'акция {self.command[2]} удалена')
+                else:
+                    logging.warning("неверно указан ticker акции")
+            else:
+                logging.warning("некорректная команда")
         else:
             logging.warning("некорректная команда")

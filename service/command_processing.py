@@ -1,6 +1,7 @@
 import sys
-import pandas as pd
 import logging
+import pandas as pd
+
 
 from model.investor_profile import InvestmentPortfolio
 from service.json_operations import WorkingWithJson
@@ -23,8 +24,8 @@ class Command:
             elif self.command[1] == "change_portfolio":
                 portfolio_dict = WorkingWithJson.read_portfolio_dict_json()
                 logging.info("Введите количество акций, которые хотите добавить в портфель")
-                n = int(sys.stdin.readline().strip())
-                for _ in range(n):
+                count_stock = int(sys.stdin.readline().strip())
+                for _ in range(count_stock):
                     logging.info("введите ticker и количество")
                     ticker, count = map(str, sys.stdin.readline().strip().split())
                     if ticker in portfolio_dict:

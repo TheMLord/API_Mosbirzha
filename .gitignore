@@ -4,3 +4,4 @@ __pycache__
 venv/pyvenv.cfg
 venv/Scripts
 portfolio.json
+venv/Lib/site-packages

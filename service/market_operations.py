@@ -34,9 +34,9 @@ class StockMarket:
             json_data['securities']['data'][0][3]
 
     @staticmethod
-    def get_stock_growth(ticker: str):
+    def get_stock_growth(ticker: str, period: int):
         end_date = pd.Timestamp.now().date()
-        start_date = end_date - pd.Timedelta(days=30)
+        start_date = end_date - pd.Timedelta(days=period)
 
         url = f'https://iss.moex.com/iss/history/engines/stock/markets/shares/boards/TQBR/securities/{ticker}.json?from={start_date}&till={end_date}&iss.meta=off&iss.only=history&history.columns=SECID,TRADEDATE,CLOSE'
         response = requests.get(url)

@@ -37,5 +37,13 @@ class Command:
                 logging.info(portfolio.output_portfolio())
             else:
                 logging.warning("некорректная команда")
+        elif len(self.command) == 3:
+            if self.command[1] == "view_portfolio":
+                try:
+                    period = int(self.command[2])
+                    portfolio = InvestmentPortfolio(WorkingWithJson.read_portfolio_dict_json())
+                    logging.info(portfolio.output_portfolio(period))
+                except ValueError:
+                    logging.warning("некорректная команда")
         else:
             logging.warning("некорректная команда")
